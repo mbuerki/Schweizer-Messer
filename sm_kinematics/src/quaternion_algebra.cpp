@@ -371,7 +371,10 @@ namespace sm { namespace kinematics {
         	J.setZero();
 
         	double n = qeps(p).norm();
-
+        	if(n < 1e-12)
+        	{
+        		return J;
+        	}
 
         	double de = n*n*n;//pow(n, 3);
         	double u12 = p(1)*p(1) + p(2)*p(2);//pow(p(1), 2) + pow(p(2), 2);
